@@ -1,8 +1,8 @@
 ---
-title: "About"
-image: profile.jpg
+title: "Dave Tirtariyadi"
 about:
   template: jolla
+  image: 37C8A1EC-F963-4569-8A09-1AB8F8EEDD4A.jpg
   links:
     - icon: github
       text: Github
@@ -12,4 +12,4 @@ about:
       href: https://www.linkedin.com/in/davetirtariyadi/
 ---
 
-About this blog
+My name is Dave and this is my portfolio.
