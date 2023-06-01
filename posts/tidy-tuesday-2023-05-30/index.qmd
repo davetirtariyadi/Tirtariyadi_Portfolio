@@ -1,6 +1,117 @@
 ---
-title: "Tidy Tuesday (05/30/2023): Oldest People"
+title: "Tidy Tuesday (05/30/2023): Centenarians"
 author: "Dave Tirtariyadi"
 date: "2023-05-30"
 categories: [tidy tuesday]
+execute: 
+  echo: true
+  message: false
+  warning: false
+  cache: true
 ---
+
+In this post, I analyze data on the oldest centenarians in the world! The main dataset was produced by frankiethull and can be found [here](https://github.com/rfordatascience/tidytuesday/tree/master/data/2023/2023-05-30).
+
+The dataset contains the oldest 100 known verified male and female centenarians.
+
+```{r}
+#| label: load-data-pkgs
+
+library(tidyverse)
+library(tidymodels)
+library(skimr)
+library(knitr)
+library(kableExtra)
+
+centenarians <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-05-30/centenarians.csv')
+
+theme_set(theme_minimal())
+set.seed(123)
+```
+
+Let's skim the dataset first.
+
+```{r}
+#| label: skim-data
+
+skim(centenarians)
+```
+
+We see that there are eight variables in the dataset, including `place_of_death_or_residence`, `gender`, and `birth_date`.
+
+Cool thing: the average age of the 100 oldest male and female centenarians is **114 years old**!
+
+# Exploratory data analysis
+
+Let's first talk a look at where the 100 oldest male and female centenarians come from.
+
+```{r}
+top_ten_country <- centenarians %>% 
+  group_by(place_of_death_or_residence) %>% 
+  count() %>% 
+  arrange(desc(n)) %>% 
+  head(10) %>% 
+  rename(Country = place_of_death_or_residence, Count = n)
+
+kable(top_ten_country,
+      align = "l") %>% 
+  kable_classic()
+```
+
+We see that the United States and Japan dominate the list of countries, accounting for more than half of the entire dataset of 200 centenarians! How about if we analyze on the continent-level?
+
+```{r}
+library(countrycode)
+clean_continent <- centenarians %>% 
+  mutate(
+    place_of_death_or_residence = case_when(
+      place_of_death_or_residence == "France (French Guiana)" ~ "France",
+      place_of_death_or_residence == "France (Saint Barthélemy)" ~ "France",
+      TRUE ~ place_of_death_or_residence
+    )
+  )
+
+clean_continent <- clean_continent %>% 
+  mutate(
+    continent = 
+      countrycode(
+        clean_continent$place_of_death_or_residence, 
+        origin = "country.name", 
+        destination = "continent")
+  )
+
+clean_continent %>% 
+  ggplot(mapping = aes(y = fct_rev(fct_infreq(continent)))) + 
+  geom_bar() +
+  labs(
+    title = 
+      "Continent Distribution of Centenarian Place of Death or Residence",
+    subtitle = "Most centenarians are from the Americas, Asia or Europe",
+    y = "Continent"
+  )
+```
+
+Let's take a closer look at centenarians from the United States and Japan. What does the gender distribution look like?
+
+```{r}
+data <- centenarians %>% 
+  filter(place_of_death_or_residence %in% c("United States", "Japan")) %>% 
+  group_by(place_of_death_or_residence, gender) %>% 
+  count()
+
+pivot_data <- data %>%
+  pivot_wider(names_from = gender, values_from = n)
+```
+
+
+```{r}
+centenarians %>% 
+  ggplot(mapping = aes(x = birth_date)) +
+  geom_histogram(binwidth = 1500)
+```
+
+```{r}
+centenarians %>% 
+  ggplot(mapping = aes(x = birth_date, y = age, color = still_alive)) +
+  geom_point()
+```
