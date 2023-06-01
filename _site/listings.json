@@ -3,6 +3,7 @@
     "listing": "/index.html",
     "items": [
       "/posts/post-with-code/index.html",
+      "/posts/tidy-tuesday-2023-05-30/index.html",
       "/posts/welcome/index.html"
     ]
   }

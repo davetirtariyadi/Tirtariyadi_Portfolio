@@ -1,0 +1,6 @@
+---
+title: "Tidy Tuesday (05/30/2023): Oldest People"
+author: "Dave Tirtariyadi"
+date: "2023-05-30"
+categories: [tidy tuesday]
+---
