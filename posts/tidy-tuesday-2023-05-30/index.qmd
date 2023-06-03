@@ -4,18 +4,16 @@ author: "Dave Tirtariyadi"
 date: "2023-05-30"
 categories: [tidy tuesday]
 execute: 
-  echo: true
   message: false
   warning: false
   cache: true
 ---
 
-In this post, I analyze data on the oldest centenarians in the world! The main dataset was produced by frankiethull and can be found [here](https://github.com/rfordatascience/tidytuesday/tree/master/data/2023/2023-05-30).
-
-The dataset contains the oldest 100 known verified male and female centenarians.
+In this post, I analyze data on the oldest centenarians in the world! The main dataset was produced by frankiethull and can be found [here](https://github.com/rfordatascience/tidytuesday/tree/master/data/2023/2023-05-30). The dataset contains the oldest 100 known verified male and female centenarians.
 
 ```{r}
 #| label: load-data-pkgs
+#| echo: false
 
 library(tidyverse)
 library(tidymodels)
@@ -33,6 +31,7 @@ Let's skim the dataset first.
 
 ```{r}
 #| label: skim-data
+#| echo: false
 
 skim(centenarians)
 ```
@@ -43,9 +42,14 @@ Cool thing: the average age of the 100 oldest male and female centenarians is **
 
 # Exploratory data analysis
 
-Let's first talk a look at where the 100 oldest male and female centenarians come from.
+## Location
+
+Let's first take a look at where the 100 oldest male and female centenarians come from.
 
 ```{r}
+#| label: top-ten-country
+#| echo: false
+
 top_ten_country <- centenarians %>% 
   group_by(place_of_death_or_residence) %>% 
   count() %>% 
@@ -54,13 +58,17 @@ top_ten_country <- centenarians %>%
   rename(Country = place_of_death_or_residence, Count = n)
 
 kable(top_ten_country,
-      align = "l") %>% 
+      align = "l",
+      caption = "Top Ten Countries with the Highest Number of Centenarians") %>% 
   kable_classic()
 ```
 
-We see that the United States and Japan dominate the list of countries, accounting for more than half of the entire dataset of 200 centenarians! How about if we analyze on the continent-level?
+We see that the **United States** and **Japan** dominate the list of countries, accounting for more than half of the entire dataset of 200 centenarians! How about if we analyze on the continent-level?
 
 ```{r}
+#| label: continent-rank
+#| echo: false
+
 library(countrycode)
 clean_continent <- centenarians %>% 
   mutate(
@@ -94,24 +102,72 @@ clean_continent %>%
 Let's take a closer look at centenarians from the United States and Japan. What does the gender distribution look like?
 
 ```{r}
-data <- centenarians %>% 
+#| label: gender-us-japan
+#| echo: false
+
+us_japan <- centenarians %>% 
   filter(place_of_death_or_residence %in% c("United States", "Japan")) %>% 
   group_by(place_of_death_or_residence, gender) %>% 
   count()
 
-pivot_data <- data %>%
-  pivot_wider(names_from = gender, values_from = n)
+pivot_us_japan <- us_japan %>%
+  pivot_wider(names_from = gender, values_from = n) %>% 
+  rename(
+    Country = place_of_death_or_residence, 
+    Female = female, Male = male)
+
+kable(pivot_us_japan,
+      align = "l",
+      caption = "Gender Distribution among Centenarians in the United States and Japan") %>% 
+  kable_classic()
 ```
 
+We see that there is an almost equal split between male and female in Japan and the United States. 
+
+## Birth date
+
+Are centenarians more likely to be born on a certain month?
 
 ```{r}
-centenarians %>% 
-  ggplot(mapping = aes(x = birth_date)) +
-  geom_histogram(binwidth = 1500)
+#| label: month-dist
+#| echo: false
+
+birth_month <- centenarians %>% 
+  select(name, birth_date) %>% 
+  mutate(
+    birth_month = factor(month.name[month(birth_date)], levels = month.name)
+  )
+
+birth_month %>% 
+  ggplot(mapping = aes(x = birth_month)) +
+  geom_bar() +
+  labs(
+    x = "Month of birth",
+    y = "",
+    title = "Distribution of Centenarians by Birth Month"
+  ) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
 
+There's no clear winner here, but the top two months are **May** and **August**.
+
+Were centenarians who were born earlier in history more like to reach an older age?
+
 ```{r}
-centenarians %>% 
-  ggplot(mapping = aes(x = birth_date, y = age, color = still_alive)) +
-  geom_point()
+#| label: age-vs-birth-date
+#| echo: false
+
+centenarians %>%
+  ggplot(mapping = aes(x = birth_date, y = age, color = gender)) +
+  geom_point() +
+  labs(
+    x = "Year",
+    y = "Age",
+    color = "Gender",
+    title = "Age Distribution of Centenarians by Gender Over Time"
+  ) +
+  theme_minimal() +
+  theme(legend.position = "bottom") +
+  scale_color_discrete(labels = function(x) str_to_title(x))
 ```
