@@ -1,7 +1,7 @@
 ---
 title: "Dave Tirtariyadi"
 about:
-  template: jolla
+  template: trestles
   image: 37C8A1EC-F963-4569-8A09-1AB8F8EEDD4A.jpg
   links:
     - icon: github
@@ -10,6 +10,31 @@ about:
     - icon: linkedin
       text: LinkedIn
       href: https://www.linkedin.com/in/davetirtariyadi/
+    - icon: envelope-at
+      text: Email
+      href: "mailto:dt393@cornell.edu"
 ---
 
 My name is Dave and this is my portfolio.
+
+I am a senior at Cornell University, studying Chemical Engineering and Data Science.
+
+As a results-driven data scientist, I am passionate about uncovering patterns and hidden insights in data. I thrive on extracting actionable information and building predictive models that drive strategic decision-making. Collaborating in multidisciplinary teams fuels my motivation, as it allows me to contribute my expertise, learn from others, and tackle complex challenges. With this combination of passion, analytical skills, and a collaborative mindset, I strive to make a meaningful impact in the field of data science, leveraging data to drive informed decision-making and solve real-world problems.
+
+**Relevant Courses**:
+
+CHEME 6888: Deep Learning (Fall 2023)
+
+CS 4780: Introduction to Machine Learning (Fall 2022)
+
+CHEME 5660: Finance for Engineers (Fall 2023)
+
+INFO 2770: Computational Sustainability (Spring 2023)
+
+INFO 2950: Introduction to Data Science (Spring 2023)
+
+CS 2110: Object-Oriented Programming and Data Structures (Spring 2021)
+
+**Languages**: R \| Python \| Java \| SQL
+
+**Skills**: Data Visualization \| Statistical Analysis \| Machine Learning
