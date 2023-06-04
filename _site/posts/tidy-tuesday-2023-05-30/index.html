@@ -151,6 +151,7 @@ ul.task-list li input[type="checkbox"] {
 
 
 <p>In this post, I analyze data on the oldest centenarians in the world! The main dataset was produced by frankiethull and can be found <a href="https://github.com/rfordatascience/tidytuesday/tree/master/data/2023/2023-05-30">here</a>. The dataset contains the oldest 100 known verified male and female centenarians.</p>
+<p><img src="old-pic.jpg" class="img-fluid"></p>
 <p>Let’s skim the dataset first.</p>
 <div class="cell" data-hash="index_cache/html/skim-data_4292af1802fa0be8d5a0523a9fe5b2c0">
 <div class="cell-output-display">
@@ -580,9 +581,9 @@ age
 <section id="location" class="level2">
 <h2 class="anchored" data-anchor-id="location">Location</h2>
 <p>Let’s first take a look at where the 100 oldest male and female centenarians come from.</p>
-<div class="cell" data-hash="index_cache/html/top-ten-country_fea3e1f8d4f8950fd0811db436a4e80a">
+<div class="cell" data-hash="index_cache/html/top-ten-country_13164e1e5fc33a84a852cc72bc0441a2">
 <div class="cell-output-display">
-<table class="lightable-classic table table-sm table-striped small" data-quarto-postprocess="true">
+<table class="table table-sm table-striped small" data-quarto-postprocess="true">
 <caption>Top Ten Countries with the Highest Number of Centenarians</caption>
 <thead>
 <tr class="header">
@@ -638,15 +639,15 @@ age
 </div>
 </div>
 <p>We see that the <strong>United States</strong> and <strong>Japan</strong> dominate the list of countries, accounting for more than half of the entire dataset of 200 centenarians! How about if we analyze on the continent-level?</p>
-<div class="cell" data-hash="index_cache/html/continent-rank_fafeaec0350df51824d8991ec72eca83">
+<div class="cell" data-hash="index_cache/html/continent-rank_0b906647d3ac64174f5972a3a499794b">
 <div class="cell-output-display">
 <p><img src="index_files/figure-html/continent-rank-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>Let’s take a closer look at centenarians from the United States and Japan. What does the gender distribution look like?</p>
-<div class="cell" data-hash="index_cache/html/gender-us-japan_5e134dad0d2aeda4c4d441b1162e9be8">
+<div class="cell" data-hash="index_cache/html/gender-us-japan_8d3defb693398bb243a3ec82ac17b04e">
 <div class="cell-output-display">
-<table class="lightable-classic table table-sm table-striped small" data-quarto-postprocess="true">
+<table class="table table-sm table-striped small" data-quarto-postprocess="true">
 <caption>Gender Distribution among Centenarians in the United States and Japan</caption>
 <thead>
 <tr class="header">
@@ -677,7 +678,7 @@ age
 <section id="birth-date" class="level2">
 <h2 class="anchored" data-anchor-id="birth-date">Birth date</h2>
 <p>Are centenarians more likely to be born on a certain month?</p>
-<div class="cell" data-hash="index_cache/html/month-dist_abed648aed6068fb15db060013c7d050">
+<div class="cell" data-hash="index_cache/html/month-dist_387bfc01f4a496ac50fe2b613173f9f4">
 <div class="cell-output-display">
 <p><img src="index_files/figure-html/month-dist-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -689,6 +690,7 @@ age
 <p><img src="index_files/figure-html/age-vs-birth-date-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
+<p>There does not seem to be a clear trend between age and birth date, but the plot above demonstrates that the age of female centenarians are generally greater than male centenarians. So, maybe it is true that men’s lives are shorter than women’s!</p>
 
 
 </section>

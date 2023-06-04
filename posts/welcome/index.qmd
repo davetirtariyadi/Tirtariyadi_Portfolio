@@ -1,6 +1,6 @@
 ---
 title: "Welcome To My Blog"
-author: "Tristan O'Malley"
+author: "Dave Tirtariyadi"
 date: "2023-05-27"
 categories: [news]
 ---

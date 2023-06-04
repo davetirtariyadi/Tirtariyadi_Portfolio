@@ -11,6 +11,8 @@ execute:
 
 In this post, I analyze data on the oldest centenarians in the world! The main dataset was produced by frankiethull and can be found [here](https://github.com/rfordatascience/tidytuesday/tree/master/data/2023/2023-05-30). The dataset contains the oldest 100 known verified male and female centenarians.
 
+![](old-pic.jpg)
+
 ```{r}
 #| label: load-data-pkgs
 #| echo: false
@@ -23,8 +25,6 @@ library(kableExtra)
 
 centenarians <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-05-30/centenarians.csv')
 
-theme_set(theme_minimal())
-set.seed(123)
 ```
 
 Let's skim the dataset first.
@@ -60,7 +60,7 @@ top_ten_country <- centenarians %>%
 kable(top_ten_country,
       align = "l",
       caption = "Top Ten Countries with the Highest Number of Centenarians") %>% 
-  kable_classic()
+  kable_styling(latex_options = c("scale_down", "HOLD_position"))
 ```
 
 We see that the **United States** and **Japan** dominate the list of countries, accounting for more than half of the entire dataset of 200 centenarians! How about if we analyze on the continent-level?
@@ -90,13 +90,15 @@ clean_continent <- clean_continent %>%
 
 clean_continent %>% 
   ggplot(mapping = aes(y = fct_rev(fct_infreq(continent)))) + 
-  geom_bar() +
+  geom_bar(fill = "pink2") +
   labs(
     title = 
       "Continent Distribution of Centenarian Place of Death or Residence",
     subtitle = "Most centenarians are from the Americas, Asia or Europe",
-    y = "Continent"
-  )
+    y = "",
+    x = ""
+  ) +
+  theme_minimal()
 ```
 
 Let's take a closer look at centenarians from the United States and Japan. What does the gender distribution look like?
@@ -119,7 +121,7 @@ pivot_us_japan <- us_japan %>%
 kable(pivot_us_japan,
       align = "l",
       caption = "Gender Distribution among Centenarians in the United States and Japan") %>% 
-  kable_classic()
+  kable_styling(latex_options = c("scale_down", "HOLD_position"))
 ```
 
 We see that there is an almost equal split between male and female in Japan and the United States. 
@@ -140,7 +142,7 @@ birth_month <- centenarians %>%
 
 birth_month %>% 
   ggplot(mapping = aes(x = birth_month)) +
-  geom_bar() +
+  geom_bar(fill = "pink2") +
   labs(
     x = "Month of birth",
     y = "",
@@ -171,3 +173,5 @@ centenarians %>%
   theme(legend.position = "bottom") +
   scale_color_discrete(labels = function(x) str_to_title(x))
 ```
+
+There does not seem to be a clear trend between age and birth date, but the plot above demonstrates that the age of female centenarians are generally greater than male centenarians. So, maybe it is true that men's lives are shorter than women's!
