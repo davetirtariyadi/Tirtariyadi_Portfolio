@@ -1,0 +1,14 @@
+{
+  "hash": "dfdd1d98b2695e9b608fb490a65bcc77",
+  "result": {
+    "markdown": "---\ntitle: \"Analyzing Airbnb Data\"\nauthor: \"Dave Tirtariyadi\"\ndate: \"2023-06-04\"\ncategories: [analysis]\nimage: \"Airbnb-logo.png\"\n---\n\n\nThis is a post with executable code.\n\n\n::: {.cell}\n\n```{.r .cell-code}\n1 + 1\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n[1] 2\n```\n:::\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

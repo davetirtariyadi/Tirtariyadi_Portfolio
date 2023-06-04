@@ -1,0 +1,17 @@
+---
+title: "Analyzing Airbnb Data"
+author: "Dave Tirtariyadi"
+date: "2023-06-04"
+categories: [analysis]
+image: "Airbnb-logo.png"
+title-block-banner: "#ff5a5f"
+title-block-banner-color: "white"
+---
+
+During the Spring 2022 semester, my team and I conducted an analysis of Airbnb data, specifically focusing on the factors that influence listing prices. Through a combination of linear regressions, adjusted R-squared comparisons, and machine learning techniques, we identified the key variables that had a significant impact on Airbnb listing prices in New York City.
+
+Our investigation revealed that the most notable factors include the location of the listing, the cleanliness score, the type of room, the number of bedrooms and bathrooms, as well as the availability of a microwave, washer, and dryer. By considering these factors, hosts in NYC can enhance their professional practices, improve the quality of their listings, and implement pricing strategies that attract more guests and generate higher earnings. Likewise, travelers can make more informed decisions when searching for accommodations that align with their preferences and budget, leading to a more satisfying and efficient Airbnb experience for everyone involved.
+
+See the full report [here](https://pages.github.coecis.cornell.edu/info2950-s23/project-wondrous-raichu/report.html).
+
+I completed this project with the help of Ethan Carlson, Boyang Li, Ribo Li, and Tasnimul Taher.

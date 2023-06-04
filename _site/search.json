@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Projects",
     "section": "",
-    "text": "Post With Code\n\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nMay 30, 2023\n\n\nHarlow Malloc\n\n\n\n\n\n\n  \n\n\n\n\nTidy Tuesday (05/30/2023): Centenarians\n\n\n\n\n\n\n\ntidy tuesday\n\n\n\n\n\n\n\n\n\n\n\nMay 30, 2023\n\n\nDave Tirtariyadi\n\n\n\n\n\n\n  \n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nMay 27, 2023\n\n\nDave Tirtariyadi\n\n\n\n\n\n\nNo matching items"
+    "text": "Analyzing Airbnb Data\n\n\n\n\n\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nJun 4, 2023\n\n\nDave Tirtariyadi\n\n\n\n\n\n\n  \n\n\n\n\nTidy Tuesday (05/30/2023): Centenarians\n\n\n\n\n\n\n\ntidy tuesday\n\n\n\n\n\n\n\n\n\n\n\nMay 30, 2023\n\n\nDave Tirtariyadi\n\n\n\n\n\n\n  \n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nMay 27, 2023\n\n\nDave Tirtariyadi\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",
@@ -47,5 +47,12 @@
     "title": "Tidy Tuesday (05/30/2023): Centenarians",
     "section": "Birth date",
     "text": "Birth date\nAre centenarians more likely to be born on a certain month?\n\n\n\n\n\nThere’s no clear winner here, but the top two months are May and August.\nWere centenarians who were born earlier in history more like to reach an older age?\n\n\n\n\n\nThere does not seem to be a clear trend between age and birth date, but the plot above demonstrates that the age of female centenarians are generally greater than male centenarians. So, maybe it is true that men’s lives are shorter than women’s!"
+  },
+  {
+    "objectID": "posts/info-2950-project/index.html",
+    "href": "posts/info-2950-project/index.html",
+    "title": "Analyzing Airbnb Data",
+    "section": "",
+    "text": "During the Spring 2022 semester, my team and I conducted an analysis of Airbnb data, specifically focusing on the factors that influence listing prices. Through a combination of linear regressions, adjusted R-squared comparisons, and machine learning techniques, we identified the key variables that had a significant impact on Airbnb listing prices in New York City.\nOur investigation revealed that the most notable factors include the location of the listing, the cleanliness score, the type of room, the number of bedrooms and bathrooms, as well as the availability of a microwave, washer, and dryer. By considering these factors, hosts in NYC can enhance their professional practices, improve the quality of their listings, and implement pricing strategies that attract more guests and generate higher earnings. Likewise, travelers can make more informed decisions when searching for accommodations that align with their preferences and budget, leading to a more satisfying and efficient Airbnb experience for everyone involved.\nSee the full report here.\nI completed this project with the help of Ethan Carlson, Boyang Li, Ribo Li, and Tasnimul Taher."
   }
 ]
