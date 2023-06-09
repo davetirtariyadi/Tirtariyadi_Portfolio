@@ -1,0 +1,14 @@
+{
+  "hash": "914890a2bed216c52ec305f6a52cab57",
+  "result": {
+    "markdown": "---\ntitle: \"Tidy Tuesday (06/06/2023): Energy\"\nauthor: \"Dave Tirtariyadi\"\ndate: \"2023-06-06\"\ncategories: [tidy tuesday]\ndraft: true\nexecute: \n  message: false\n  warning: false\n  cache: true\n---\n\n::: {.cell hash='index_cache/html/load-pkgs-data_a05842003187fd2282afd40fd846e6fe'}\n\n```{.r .cell-code}\nlibrary(tidyverse)\nlibrary(tidymodels)\nlibrary(skimr)\nlibrary(knitr)\nlibrary(kableExtra)\n\nowid_energy <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-06-06/owid-energy.csv')\n```\n:::\n\n::: {.cell hash='index_cache/html/block2_73319a161ff7ef2ca4ee690fe95b4afd'}\n\n:::\n\n::: {.cell hash='index_cache/html/block3_54201a22829da320d5cd52eff40facec'}\n\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

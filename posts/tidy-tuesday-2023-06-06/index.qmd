@@ -3,6 +3,7 @@ title: "Tidy Tuesday (06/06/2023): Energy"
 author: "Dave Tirtariyadi"
 date: "2023-06-06"
 categories: [tidy tuesday]
+draft: true
 execute: 
   message: false
   warning: false
@@ -10,17 +11,25 @@ execute:
 ---
 
 ```{r}
-#| label:
+#| label: load-pkgs-data
+
+library(tidyverse)
+library(tidymodels)
+library(skimr)
+library(knitr)
+library(kableExtra)
+
+owid_energy <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-06-06/owid-energy.csv')
 
 ```
 
 ```{r}
-#| label:
+#| label: block2
 
 ```
 
 ```{r}
-#| label:
+#| label: block3
 
 ```
 
