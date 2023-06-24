@@ -10,6 +10,8 @@ execute:
   cache: true
 ---
 
+The dataset used here comes from Our World in Data's Energy Data Explorer. The complete dataset can be found [here](https://github.com/owid/energy-data).
+
 ```{r}
 #| label: load-pkgs-data
 
@@ -23,13 +25,16 @@ owid_energy <- readr::read_csv('https://raw.githubusercontent.com/rfordatascienc
 
 ```
 
-```{r}
-#| label: block2
-
-```
+As usual, let's first see what's in the dataset.Looking at the `skim` and the [data dictionary](https://github.com/rfordatascience/tidytuesday/tree/master/data/2023/2023-06-06#data-dictionary), we see that the dataset contains various energy performance indicators for a list of countries at different times. Specifically, the dataset has information on `r n_distinct(owid_energy$country)` countries from `r min(owid_energy$year)` to `r max(owid_energy$year)`.
 
 ```{r}
 #| label: block3
+
+owid_energy %>% 
+  filter(country %in% c("Australia", "India", "Japan")) %>% 
+  ggplot(mapping = aes(x = year, y = coal_prod_change_pct)) +
+  geom_line() +
+  facet_wrap(vars(country))
 
 ```
 

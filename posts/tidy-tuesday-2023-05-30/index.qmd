@@ -124,7 +124,7 @@ kable(pivot_us_japan,
   kable_styling(latex_options = c("scale_down", "HOLD_position"))
 ```
 
-We see that there is an almost equal split between male and female in Japan and the United States. 
+We see that there is an almost equal split between male and female in Japan and the United States.
 
 ## Birth date
 
