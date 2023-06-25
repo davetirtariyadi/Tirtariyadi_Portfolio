@@ -1,0 +1,36 @@
+---
+title: "Tidy Tuesday (06/13/2023): SAFI survey data"
+author: "Dave Tirtariyadi"
+date: "2023-06-13"
+categories: [tidy tuesday]
+draft: true
+execute: 
+  message: false
+  warning: false
+  cache: true
+---
+
+```{r}
+#| label: load-data-pkgs
+
+safi_data <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-06-13/safi_data.csv')
+
+library(tidyverse)
+library(skimr)
+```
+
+```{r}
+#| label: skim-data
+
+skim(safi_data)
+```
+
+For the data skim, we see that the three different villages in the dataset. Let's see how the number of members in a household differ among the villages.
+
+```{r}
+
+safi_data %>% 
+  ggplot(mapping = aes(x = factor(village))) +
+  geom_bar()
+
+```

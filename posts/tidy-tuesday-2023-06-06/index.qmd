@@ -37,4 +37,3 @@ owid_energy %>%
   facet_wrap(vars(country))
 
 ```
-
