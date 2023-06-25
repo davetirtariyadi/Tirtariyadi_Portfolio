@@ -25,12 +25,71 @@ library(skimr)
 skim(safi_data)
 ```
 
-For the data skim, we see that the three different villages in the dataset. Let's see how the number of members in a household differ among the villages.
+```{r}
+#| label: data-cleaning
+
+# Convert character NULL's into NA
+safi_data$affect_conflicts <- replace(
+  safi_data$affect_conflicts, 
+  safi_data$affect_conflicts == "NULL", NA)
+
+safi_data <- safi_data %>% 
+  # Remove instanceID column
+  select(-instanceID) %>% 
+  mutate(
+    # Factorize village column
+    village = factor(village),
+    # Factorize respondent_wall_type column
+    respondent_wall_type = factor(respondent_wall_type),
+    # Convert memb_assoc to logical values
+    memb_assoc = case_when(
+      memb_assoc == "yes" ~ TRUE,
+      memb_assoc == "no" ~ FALSE,
+      TRUE ~ NA
+    ),
+    # Factorize affect_conflicts column
+    affect_conflicts = factor(affect_conflicts)
+  )
+head(safi_data)
+```
 
 ```{r}
+#| label: itemize-data
 
-safi_data %>% 
-  ggplot(mapping = aes(x = factor(village))) +
-  geom_bar()
+items_df <- safi_data %>% 
+  select(key_ID, items_owned) %>% 
+  mutate(
+    items_owned = gsub("_", " ", items_owned)
+  ) %>% 
+  separate_rows(items_owned, sep = ";") %>% 
+  unnest(items_owned)
+items_df$items_owned <- replace(
+  items_df$items_owned, 
+  items_df$items_owned == "NULL", NA)
 
+months_lack_food_df <- safi_data %>% 
+  select(key_ID, months_lack_food) %>% 
+  mutate(months_lack_food = gsub(";", " ", months_lack_food)) %>% 
+  separate_rows(months_lack_food, sep = " ") %>% 
+  unnest(months_lack_food)
+```
+
+```{r}
+#| label: most-owned-items
+
+items_df %>% 
+  drop_na() %>% 
+  group_by(items_owned) %>% 
+  count() %>% 
+  mutate(items_owned = str_to_title(items_owned)) %>% 
+  arrange(desc(n)) %>% 
+  ggplot(mapping = aes(x = n, y = fct_reorder(items_owned, n))) + 
+  geom_col() + 
+  labs(
+    x = "",
+    y = "",
+    title = "Most common items in Tanzania and Mozambique households",
+    subtitle = "Radio and mobile phone are the top two items found in households"
+  ) +
+  theme_minimal()
 ```
