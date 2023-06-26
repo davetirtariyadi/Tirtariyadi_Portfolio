@@ -63,15 +63,27 @@ items_df <- safi_data %>%
   ) %>% 
   separate_rows(items_owned, sep = ";") %>% 
   unnest(items_owned)
+
 items_df$items_owned <- replace(
   items_df$items_owned, 
   items_df$items_owned == "NULL", NA)
 
 months_lack_food_df <- safi_data %>% 
   select(key_ID, months_lack_food) %>% 
-  mutate(months_lack_food = gsub(";", " ", months_lack_food)) %>% 
-  separate_rows(months_lack_food, sep = " ") %>% 
-  unnest(months_lack_food)
+  rename(month = months_lack_food) %>% 
+  mutate(month = gsub(";", " ", month)) %>% 
+  separate_rows(month, sep = " ") %>% 
+  unnest(month)
+
+months_lack_food_df$month <- replace(
+  months_lack_food_df$month, 
+  months_lack_food_df$month == "none", NA)
+
+months_lack_food_df$month <- str_sub(months_lack_food_df$month, start = 1, end = 3)
+
+unique(months_lack_food_df$month)
+
+months_lack_food_df$month = factor(months_lack_food_df$month, levels = month.abb)
 ```
 
 ```{r}
@@ -90,6 +102,24 @@ items_df %>%
     y = "",
     title = "Most common items in Tanzania and Mozambique households",
     subtitle = "Radio and mobile phone are the top two items found in households"
+  ) +
+  theme_minimal()
+```
+
+```{r}
+#| label: most-common-months
+
+months_lack_food_df %>% 
+  drop_na() %>% 
+  group_by(month) %>% 
+  count() %>% 
+  ggplot(aes(x=month, y = n)) +
+  geom_col() +
+  labs(
+    y = "",
+    x = "",
+    title = "Distribution of Months with Lack of Food",
+    subtitle = "Most families struggle to feed the household closer to the end of the year"
   ) +
   theme_minimal()
 ```
